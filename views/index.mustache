@@ -12,10 +12,14 @@
         <button id="submit" type="submit">Add Todo</button>
       </form>
       <div class="incomplete">
-
-
+      {{#inComplete}}
+        {{title}}
+      {{/inComplete}}
       </div>
       <div class="complete">
+      {{#complete}}
+        {{title}}
+      {{/complete}}
       </div>
       <script type="text/javascript" src='./main.js'>
       </script>

@@ -2,21 +2,22 @@ const fs = require('fs');
 
 
 const fetchTodos = () => {
-   let todos = [];
+   let todos = {};
    try {
       var todosStr = fs.readFileSync('todos-data.json');
-      todos = JSON.parse(todosStr);
-
+      allTodos = JSON.parse(todosStr);
+      todos.complete = allTodos.filter(todo => todo.isComplete)
+      todos.inComplete = allTodos.filter(todo => !todo.isComplete)
    } catch (e) {
 
    };
    return todos
 }
-const saveToDos = (todo) => {
+const saveToDo = (todo) => {
    fs.writeFileSync('todos-data.json', JSON.stringify(todos))
 }
 
 module.exports = {
-    saveToDos,
+    saveToDo,
     fetchTodos
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const mustache = require('mustache-express');
-
+const { fetchTodos, saveTodo } = require('./todos')
 // set our server object into a variable
 const application = express();
 
@@ -20,7 +20,7 @@ application.use('/', function(request, response){
    // basic send response
 
    //uncomment this to verify mustache is working
-   response.render('index');
+   response.render('index', fetchTodos());
 })
 
 const port = 3000
